@@ -387,7 +387,12 @@ if __name__ == "__main__":
     if len(args)==0:
         print "Usage: learninggcc.py [options] benchmark"
         sys.exit(1)
-                
+
+    if not os.path.isfile(CONF_GCC_PLUGIN):
+        print ("Unable to locate the GCC StaticCounter plugin at:"
+               " %s" % CONF_GCC_PLUGIN)
+        sys.exit(1)
+
     l = LearningGCC(use_mapreduce=options.usemapreduce,
                     knowledge=options.knowledge,
                     tmpdir=options.tmpdir,
